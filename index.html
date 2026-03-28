@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>GHOST M</title>
-<style>body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#333}h1{color:#0A1628}a{color:#00E5FF}</style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHOST M — Automated Short-Form Video Publishing</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#222;background:#fff}
+    header{background:#0A1628;color:#fff;padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
+    header h1{font-size:1.4rem;letter-spacing:2px}
+    nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:.9rem}
+    nav a:hover{color:#fff}
+    .hero{background:linear-gradient(135deg,#0A1628 0%,#1a3a5c 100%);color:#fff;padding:80px 40px;text-align:center}
+    .hero h2{font-size:2.4rem;margin-bottom:16px}
+    .hero p{font-size:1.1rem;color:#aac4e8;max-width:600px;margin:0 auto 32px;line-height:1.7}
+    .badge{display:inline-block;background:#00E5FF;color:#0A1628;font-weight:700;padding:4px 12px;border-radius:4px;font-size:.85rem;margin-bottom:20px}
+    .features{padding:64px 40px;max-width:1000px;margin:0 auto}
+    .features h3{font-size:1.6rem;margin-bottom:40px;text-align:center;color:#0A1628}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+    .card{border:1px solid #e5e5e5;border-radius:10px;padding:28px}
+    .card h4{font-size:1rem;margin-bottom:10px;color:#0A1628}
+    .card p{font-size:.9rem;color:#555;line-height:1.6}
+    .icon{font-size:1.8rem;margin-bottom:12px}
+    .channels{background:#f7f9fc;padding:64px 40px}
+    .channels h3{font-size:1.6rem;text-align:center;margin-bottom:40px;color:#0A1628}
+    .ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:800px;margin:0 auto}
+    .ch-card{background:#fff;border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .ch-card h4{font-size:1rem;margin-bottom:6px}
+    .ch-card p{font-size:.85rem;color:#777}
+    .tiktok-section{padding:64px 40px;max-width:800px;margin:0 auto;text-align:center}
+    .tiktok-section h3{font-size:1.6rem;margin-bottom:16px;color:#0A1628}
+    .tiktok-section p{color:#555;line-height:1.7;margin-bottom:12px}
+    footer{background:#0A1628;color:#888;text-align:center;padding:32px;font-size:.85rem}
+    footer a{color:#aac4e8;text-decoration:none;margin:0 12px}
+  </style>
 </head>
 <body>
-<h1>GHOST M</h1>
-<p>Automated content publishing platform for short-form video channels.</p>
-<ul>
-<li><a href="terms.html">Terms of Service</a></li>
-<li><a href="privacy.html">Privacy Policy</a></li>
-</ul>
+  <header>
+    <h1>GHOST M</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="badge">Automated Publishing Platform</div>
+    <h2>Short-Form Video, Fully Automated</h2>
+    <p>GHOST M is a content automation platform that researches trending topics, generates scripts, produces videos, and publishes them to TikTok and YouTube — completely hands-free.</p>
+  </section>
+  <section class="features">
+    <h3>How It Works</h3>
+    <div class="grid">
+      <div class="card"><div class="icon">🔍</div><h4>Trend Research</h4><p>Automatically monitors Reddit, YouTube, and TikTok trends to identify high-engagement topics before they peak.</p></div>
+      <div class="card"><div class="icon">✍️</div><h4>Script Generation</h4><p>AI-powered script writing tailored to each channel's voice — psychology, finance, or storytelling.</p></div>
+      <div class="card"><div class="icon">🎬</div><h4>Video Production</h4><p>Automated TTS narration, subtitle generation, background video selection, and compositing via FFmpeg.</p></div>
+      <div class="card"><div class="icon">📤</div><h4>TikTok Publishing</h4><p>Directly publishes finished videos to TikTok using the Content Posting API with scheduled posting times.</p></div>
+      <div class="card"><div class="icon">📊</div><h4>Analytics</h4><p>Tracks views, follower growth, and engagement across all channels to inform future content decisions.</p></div>
+      <div class="card"><div class="icon">🔔</div><h4>Notifications</h4><p>Real-time alerts for upload status, monetization milestones, and performance reports.</p></div>
+    </div>
+  </section>
+  <section class="channels">
+    <h3>Active Channels</h3>
+    <div class="ch-grid">
+      <div class="ch-card"><h4>MindWired</h4><p>Psychology &amp; Human Behavior</p></div>
+      <div class="ch-card"><h4>Darkside Tales</h4><p>Betrayal &amp; Revenge Stories</p></div>
+      <div class="ch-card"><h4>CashVerdict</h4><p>Finance &amp; Legal Cases</p></div>
+    </div>
+  </section>
+  <section class="tiktok-section">
+    <h3>TikTok Integration</h3>
+    <p>GHOST M uses the TikTok Content Posting API to publish original short-form videos to creator accounts. All content is original and complies with TikTok's Community Guidelines.</p>
+    <p>The platform uses OAuth 2.0 via TikTok Login Kit to securely connect accounts. No passwords are stored — only access tokens provided by TikTok's authorization flow.</p>
+  </section>
+  <footer>
+    <p>&copy; 2026 GHOST M. All rights reserved.</p>
+    <p style="margin-top:10px"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></p>
+  </footer>
 </body>
 </html>
