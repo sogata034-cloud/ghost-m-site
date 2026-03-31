@@ -11,10 +11,15 @@
     header h1{font-size:1.4rem;letter-spacing:2px}
     nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:.9rem}
     nav a:hover{color:#fff}
+    .btn-connect-nav{background:#FF004F;color:#fff !important;padding:6px 16px;border-radius:6px;font-weight:600;font-size:.85rem !important}
+    .btn-connect-nav:hover{background:#cc0040 !important}
     .hero{background:linear-gradient(135deg,#0A1628 0%,#1a3a5c 100%);color:#fff;padding:80px 40px;text-align:center}
     .hero h2{font-size:2.4rem;margin-bottom:16px}
     .hero p{font-size:1.1rem;color:#aac4e8;max-width:600px;margin:0 auto 32px;line-height:1.7}
     .badge{display:inline-block;background:#00E5FF;color:#0A1628;font-weight:700;padding:4px 12px;border-radius:4px;font-size:.85rem;margin-bottom:20px}
+    .btn-tiktok{display:inline-flex;align-items:center;gap:10px;background:#FF004F;color:#fff;border:none;padding:16px 36px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none;margin-top:8px;transition:background .2s}
+    .btn-tiktok:hover{background:#cc0040}
+    .btn-tiktok svg{width:24px;height:24px;fill:#fff}
     .features{padding:64px 40px;max-width:1000px;margin:0 auto}
     .features h3{font-size:1.6rem;margin-bottom:40px;text-align:center;color:#0A1628}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
@@ -28,11 +33,20 @@
     .ch-card{background:#fff;border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
     .ch-card h4{font-size:1rem;margin-bottom:6px}
     .ch-card p{font-size:.85rem;color:#777}
-    .tiktok-section{padding:64px 40px;max-width:800px;margin:0 auto;text-align:center}
+    .connect-section{padding:72px 40px;max-width:700px;margin:0 auto;text-align:center}
+    .connect-section h3{font-size:1.8rem;margin-bottom:16px;color:#0A1628}
+    .connect-section p{color:#555;line-height:1.7;margin-bottom:28px;font-size:1rem}
+    .connect-box{border:2px solid #e5e5e5;border-radius:14px;padding:40px;background:#fafafa}
+    .steps{text-align:left;margin:24px 0 32px;padding:0 16px}
+    .steps li{color:#444;font-size:.95rem;line-height:1.8;margin-bottom:6px;list-style:decimal;margin-left:20px}
+    .notice{font-size:.8rem;color:#999;margin-top:14px}
+    .tiktok-section{padding:48px 40px;max-width:800px;margin:0 auto;text-align:center}
     .tiktok-section h3{font-size:1.6rem;margin-bottom:16px;color:#0A1628}
     .tiktok-section p{color:#555;line-height:1.7;margin-bottom:12px}
     footer{background:#0A1628;color:#888;text-align:center;padding:32px;font-size:.85rem}
     footer a{color:#aac4e8;text-decoration:none;margin:0 12px}
+    /* Connected state banner */
+    .connected-banner{display:none;background:#e6f9f0;border:1.5px solid #2ecc71;border-radius:10px;padding:16px 24px;margin:24px auto;max-width:700px;text-align:center;color:#1a7a46;font-weight:600}
   </style>
 </head>
 <body>
@@ -42,13 +56,25 @@
       <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
+      <a href="#connect" class="btn-connect-nav">Connect TikTok</a>
     </nav>
   </header>
+
+  <!-- Connected state banner (shown after OAuth callback) -->
+  <div class="connected-banner" id="connectedBanner">
+    ✅ TikTok account connected successfully! GHOST M is now authorized to publish videos.
+  </div>
+
   <section class="hero">
     <div class="badge">Automated Publishing Platform</div>
     <h2>Short-Form Video, Fully Automated</h2>
     <p>GHOST M is a content automation platform that researches trending topics, generates scripts, produces videos, and publishes them to TikTok and YouTube — completely hands-free.</p>
+    <a href="#connect" class="btn-tiktok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.84a8.18 8.18 0 004.78 1.52V6.9a4.85 4.85 0 01-1.01-.21z"/></svg>
+      Connect TikTok Account
+    </a>
   </section>
+
   <section class="features">
     <h3>How It Works</h3>
     <div class="grid">
@@ -60,6 +86,7 @@
       <div class="card"><div class="icon">🔔</div><h4>Notifications</h4><p>Real-time alerts for upload status, monetization milestones, and performance reports.</p></div>
     </div>
   </section>
+
   <section class="channels">
     <h3>Active Channels</h3>
     <div class="ch-grid">
@@ -68,14 +95,89 @@
       <div class="ch-card"><h4>CashVerdict</h4><p>Finance &amp; Legal Cases</p></div>
     </div>
   </section>
+
+  <!-- LOGIN ENTRY POINT -->
+  <section class="connect-section" id="connect">
+    <h3>Connect Your TikTok Account</h3>
+    <p>Authorize GHOST M to publish videos to your TikTok account using TikTok's official OAuth 2.0 login flow.</p>
+    <div class="connect-box">
+      <div class="steps">
+        <ol>
+          <li>Click the button below to open TikTok's secure login page</li>
+          <li>Log in with your TikTok account credentials</li>
+          <li>Review and approve the permissions requested</li>
+          <li>You'll be redirected back here — GHOST M will begin publishing automatically</li>
+        </ol>
+      </div>
+      <a id="tiktokLoginBtn" href="#" class="btn-tiktok" onclick="startTikTokAuth(event)">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.84a8.18 8.18 0 004.78 1.52V6.9a4.85 4.85 0 01-1.01-.21z"/></svg>
+        Login with TikTok
+      </a>
+      <p class="notice">Permissions requested: read profile info, upload and publish videos. No passwords are stored.</p>
+    </div>
+  </section>
+
   <section class="tiktok-section">
     <h3>TikTok Integration</h3>
     <p>GHOST M uses the TikTok Content Posting API to publish original short-form videos to creator accounts. All content is original and complies with TikTok's Community Guidelines.</p>
     <p>The platform uses OAuth 2.0 via TikTok Login Kit to securely connect accounts. No passwords are stored — only access tokens provided by TikTok's authorization flow.</p>
   </section>
+
   <footer>
     <p>&copy; 2026 GHOST M. All rights reserved.</p>
     <p style="margin-top:10px"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></p>
   </footer>
+
+  <script>
+    var CLIENT_KEY = "awx8tkjyfbrbmagd";
+    var REDIRECT_URI = "https://sogata034-cloud.github.io/ghost-m-site/";
+    var SCOPES = "user.info.basic,user.info.profile,video.publish,video.upload";
+    var STATE = "ghostm_" + Math.random().toString(36).substr(2, 9);
+
+    function startTikTokAuth(e) {
+      e.preventDefault();
+      var authUrl = "https://www.tiktok.com/v2/auth/authorize"
+        + "?client_key=" + encodeURIComponent(CLIENT_KEY)
+        + "&scope=" + encodeURIComponent(SCOPES)
+        + "&response_type=code"
+        + "&redirect_uri=" + encodeURIComponent(REDIRECT_URI)
+        + "&state=" + STATE;
+      window.location.href = authUrl;
+    }
+
+    // Handle OAuth callback: detect ?code= in URL
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get("code");
+      var error = params.get("error");
+
+      if (code) {
+        // Show connected banner
+        var banner = document.getElementById("connectedBanner");
+        if (banner) banner.style.display = "block";
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+
+        // Update the login button to show connected state
+        var btn = document.getElementById("tiktokLoginBtn");
+        if (btn) {
+          btn.textContent = "✅ Account Connected";
+          btn.style.background = "#2ecc71";
+          btn.style.cursor = "default";
+          btn.onclick = function(e){ e.preventDefault(); };
+        }
+
+        // Clean up URL
+        history.replaceState({}, document.title, window.location.pathname);
+      } else if (error) {
+        var btn = document.getElementById("tiktokLoginBtn");
+        if (btn) {
+          btn.textContent = "Authorization cancelled — try again";
+          btn.style.background = "#e74c3c";
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
